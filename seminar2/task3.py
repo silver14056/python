@@ -18,3 +18,39 @@
 Input: 6 -> -20 30 -40 50 10 -10
 Output: 2
 """
+
+# Решение ученика
+"""
+from random import randint
+
+N = 20
+Tav = [randint(-50, 50) for i in range(N)]
+n = 0
+Nmax = 0
+for i in range(N):
+    if Tav[i] > 0:
+        n += 1
+    else:
+        if n > Nmax:
+            Nmax = n
+        n = 0
+
+print(Tav)
+print(Nmax)
+"""
+
+numbers = "-20 30 -40 50 10 -10".split()
+length = 0
+max_length = 0
+
+for elem in numbers:
+    num = int(elem)
+    if num > 0:
+        length += 1
+    else:
+        length = 0
+
+    if length > max_length:
+        max_length = length
+
+print(max_length)
