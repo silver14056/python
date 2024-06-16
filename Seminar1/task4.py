@@ -10,3 +10,12 @@
 Input: 2016
 Output: YES
 """
+
+year = 2023
+if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+    print("yes")
+else:
+    print("no")
+
+# тернарный оператор
+print("Yes" if year % 4 == 0 and year % 100 != 0 or year % 400 == 0 else "No")
