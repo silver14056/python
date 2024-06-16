@@ -13,3 +13,29 @@
 Input: 5 -> 5 1 6 5 9
 Output: 1 9
 """
+
+data = [5, 1, 6, 5, 9]
+max_elem = data[0]
+min_elem = data[0]
+
+for elem in data:
+    if elem > max_elem:
+        max_elem = elem
+    if elem < min_elem:
+        min_elem = elem
+
+print(min_elem, max_elem)
+
+
+#Рекурсия
+
+def func(data, max_elem=data[0], min_elem=data[0]):
+    if len(data) == 0:
+        return min_elem, max_elem
+    if data[0] < min_elem:
+        min_elem = data[0]
+    if data[0] > max_elem:
+        max_elem = data[0]
+    return func(data[1:], max_elem, min_elem)
+
+print(func(data))
