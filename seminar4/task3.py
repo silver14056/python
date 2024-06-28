@@ -15,7 +15,7 @@
 """
 
 n = int(input("Введите число (0 для выхода): "))
-max_number = -1
+max_number = n
 while n != 0:
     n = int(input("Введите число (0 для выхода): "))
     if max_number < n:
