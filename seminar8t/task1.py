@@ -40,5 +40,5 @@ def telephone_book():
 
 
 flag = True
-while (flag):
+while flag:
     flag = telephone_book()
