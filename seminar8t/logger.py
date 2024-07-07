@@ -36,7 +36,7 @@ def print_data():
                 j = i
         print(''.join(data_first_list))
 
-    print('Вывожу данные из 1 файла: \n')
+    print('Вывожу данные из 2 файла: \n')
     with open('data_second_variant.csv', 'r', encoding='utf-8') as f:
         data_second = f.readlines()
-        print(data_second)
+        print(*data_second)
