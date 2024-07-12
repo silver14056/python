@@ -94,8 +94,9 @@ another_filename = 'another_phone.csv'
 
 def main():
     while True:
-        command = input("Q-Выход, W-Записать данные, R-Прочитать данные, F-Найти, D-Удалить, C-Изменить, M-копировать в файл\n"
-                        "Введите команду: ")
+        command = input(
+            "Q-Выход, W-Записать, R-Прочитать, F-Найти, D-Удалить, C-Изменить, M-Копировать в файл\n"
+            "Введите команду: ")
         if command.lower() == "q":
             break
         elif command.lower() == "w":
