@@ -94,34 +94,36 @@ another_filename = 'another_phone.csv'
 
 def main():
     while True:
-        command = input("Введите команду: ")
-        if command == "q":
+        command = input("Q-Выход, W-Записать данные, R-Прочитать данные, F-Найти, D-Удалить, C-Изменить, M-копировать в файл\n"
+                        "Введите команду: ")
+        if command.lower() == "q":
             break
-        elif command == "w":
+        elif command.lower() == "w":
             if not exists(filename):
                 create_file(filename)
             write_file(filename, get_data())
-        elif command == "r":
+        elif command.lower() == "r":
             if not exists(filename):
                 print("Файл не существует. Создайте его.")
                 continue
-            print(read_file(filename))
-        elif command == 'f':
+            for row in read_file(filename):
+                print(row, end='\n')
+        elif command.lower() == 'f':
             if not exists(filename):
                 print("Файл не существует. Создайте его.")
                 continue
             print(row_search(filename))
-        elif command == 'd':
+        elif command.lower() == 'd':
             if not exists(filename):
                 print("Файл не существует. Создайте его.")
                 continue
             delete_row(filename)
-        elif command == 'c':
+        elif command.lower() == 'c':
             if not exists(filename):
                 print("Файл не существует. Создайте его.")
                 continue
             change_row(filename)
-        elif command == 'm':
+        elif command.lower() == 'm':
             if not exists(filename):
                 print("Исходный файл не существует. Создайте его.")
                 continue
