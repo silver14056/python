@@ -27,59 +27,69 @@ def get_data():
     return [first_name, last_name, phone]
 
 
-def create_file(filename):
-    with open(filename, 'w', encoding='utf-8') as data:
+def create_file(file_name):
+    with open(file_name, 'w', encoding='utf-8') as data:
         f_w = DictWriter(data, fieldnames=['Имя', 'Фамилия', 'Телефон'])
         f_w.writeheader()
 
 
-def read_file(filename):
-    with open(filename, 'r', encoding='utf-8') as data:
+def read_file(file_name):
+    with open(file_name, 'r', encoding='utf-8') as data:
         f_r = DictReader(data)
         return list(f_r)
 
 
-def write_file(filename, lst):
-    res = read_file(filename)
+def write_file(file_name, lst):
+    res = read_file(file_name)
     obj = {'Имя': lst[0], 'Фамилия': lst[1], 'Телефон': lst[2]}
     res.append(obj)
-    standart_write(filename, res)
+    standart_write(file_name, res)
 
 
-def row_search(filename):
+def row_search(file_name):
     last_name = input("Введите фамилию: ")
-    res = read_file(filename)
+    res = read_file(file_name)
     for row in res:
         if last_name == row['Фамилия']:
             return row
     return "Запись не найдена"
 
 
-def delete_row(filename):
+def delete_row(file_name):
     row_number = int(input("Введите номер строки: "))
-    res = read_file(filename)
+    res = read_file(file_name)
     res.pop(row_number - 1)
-    standart_write(filename, res)
+    standart_write(file_name, res)
 
 
-def standart_write(filename, res):
-    with open(filename, 'w', encoding='utf-8') as data:
+def standart_write(file_name, res):
+    with open(file_name, 'w', encoding='utf-8') as data:
         f_w = DictWriter(data, fieldnames=['Имя', 'Фамилия', 'Телефон'])
         f_w.writeheader()
         f_w.writerows(res)
 
 
-def change_row(filename):
+def change_row(file_name):
     row_number = int(input("Введите номер строки: "))
-    res = read_file(filename)
+    res = read_file(file_name)
     data = get_data()
     res[row_number - 1]['Имя'] = data[0]
     res[row_number - 1]['Фамилия'] = data[1]
     res[row_number - 1]['Телефон'] = data[2]
-    standart_write(filename, res)
+    standart_write(file_name, res)
+
+
+def copy_row_to_file(file_name, another_file_name):
+    row_number = int(input("Введите номер строки: "))
+    res = read_file(file_name)
+    another_res = read_file(another_file_name)
+    another_res.clear()
+    another_res.append(res[row_number - 1])
+    standart_write(another_file_name, another_res)
 
 
 filename = 'phone.csv'
+another_filename = 'another_phone.csv'
 
 
 def main():
@@ -111,6 +121,14 @@ def main():
                 print("Файл не существует. Создайте его.")
                 continue
             change_row(filename)
+        elif command == 'm':
+            if not exists(filename):
+                print("Исходный файл не существует. Создайте его.")
+                continue
+            if not exists(another_filename):
+                create_file(another_filename)
+                continue
+            copy_row_to_file(filename, another_filename)
 
 
 main()
