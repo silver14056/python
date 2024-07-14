@@ -62,15 +62,14 @@ def change_data():
                     j += 1
                     data_first_list.append(''.join(data_first[j:i + 1]))
                     j = i
-            data_first_list[key-1] = f"{name}\n{surname}\n{phone}\n{address}\n\n"
+            data_first_list[key - 1] = f"{name}\n{surname}\n{phone}\n{address}\n\n"
             print((''.join(data_first_list)))
         with open('data_first_variant.csv', 'w', encoding='utf-8') as f:
             f.write(''.join(data_first_list))
     elif var == 2:
         with open('data_second_variant.csv', 'r', encoding='utf-8') as f:
             data_second = f.readlines()
-            print(data_second)
-            data_second[key-1] = f"{name};{surname};{phone};{address}\n"
+            data_second[key - 1] = f"{name};{surname};{phone};{address}\n"
             print(*data_second)
         with open('data_second_variant.csv', 'w', encoding='utf-8') as f:
             f.write(''.join(data_second))
@@ -92,15 +91,14 @@ def delete_data():
                     j += 1
                     data_first_list.append(''.join(data_first[j:i + 1]))
                     j = i
-            data_first_list.pop(key-1)
+            data_first_list.pop(key - 1)
             print((''.join(data_first_list)))
         with open('data_first_variant.csv', 'w', encoding='utf-8') as f:
             f.write(''.join(data_first_list))
     elif var == 2:
         with open('data_second_variant.csv', 'r', encoding='utf-8') as f:
             data_second = f.readlines()
-            print(data_second)
-            data_second.pop(key-1)
+            data_second.pop(key - 1)
             print(*data_second)
         with open('data_second_variant.csv', 'w', encoding='utf-8') as f:
             f.write(''.join(data_second))
