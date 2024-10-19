@@ -1,6 +1,7 @@
 from create import create_note
 from read import read_note
 from change import change_note
+from delete import delete_note
 
 
 def main():
@@ -25,8 +26,8 @@ def main():
         read_note()
     elif command == 3:
         change_note()
-    # elif command == 4:
-    #     delete_note()
+    elif command == 4:
+        delete_note()
 
 
 if __name__ == "__main__":
