@@ -25,4 +25,3 @@ for i in key_lst:
 # Удаляем преобразованный столбец
 data.drop(column_label, axis=1, inplace=True)
 print(data)
-
